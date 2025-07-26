@@ -7,16 +7,17 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\CursosController;
 
 //Home
-Route::get('/', [HomeController::class, 'show'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //Registro
-Route::get('/registro', [RegistroController::class, 'show'])->name('registro.form');
-Route::post('/registro', [RegistroController::class, 'registro'])->name('registro.store');
+Route::get('/registro', [RegistroController::class, 'create'])->name('registro.form');
+Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');
 
 //Login
-Route::get('/login', [LoginController::class, 'show'])->name('login.form');
+Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 //Logout
@@ -25,9 +26,20 @@ Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 //Routes de Administrador
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
+    //Curso
+    Route::get('/admin/cursos', [CursosController::class, 'index'])->name('cursos.index');
+    Route::get('/admin/cursos/{id}', [CursosController::class, 'show'])->name('curso.show');
+
+    Route::get('/admin/curso/create', [CursosController::class, 'create'])->name('crearcurso.form');
+    Route::post('/admin/curso/create', [CursosController::class, 'store'])->name('crearcurso.store');
+
+    Route::get('/admin/curso/editar/{curso}', [CursosController::class, 'edit'])->name('editarcurso.form');
+    Route::put('/admin/curso/editar/{curso}', [CursosController::class, 'update'])->name('editarcurso.store');
+
+    Route::delete('admin/curso/eliminar/{curso}', [CursosController::class, 'destroy'])->name('eliminarcurso');
 });
 
 //Routes de Estudiante
 Route::middleware(['auth', 'estudiante'])->group(function () {
-    Route::get('/estudiante/paginaprincipal', [AdminController::class, 'show'])->name('estudiante.paginaprincipal');
+    Route::get('/estudiante/paginaprincipal', [EstudianteController::class, 'show'])->name('estudiante.paginaprincipal');
 });

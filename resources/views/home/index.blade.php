@@ -9,6 +9,6 @@
     
     <h1>SGC - Sistema de Gestión de Cursos</h1>
     <a href="{{ route('registro.form') }}">Registro</a>
-    <a href="{{ route('login.form') }}">Inicio de sesión</a>
+    <a href="{{ route('login') }}">Inicio de sesión</a>
 </body>
 </html>

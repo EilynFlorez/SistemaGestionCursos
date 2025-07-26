@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class RegistroController extends Controller
 {
     //
-    public function show() {
+    public function create() {
         if(Auth::check()) {
             $usuario = Auth::user();
 
@@ -18,8 +18,8 @@ class RegistroController extends Controller
         }
         return view('auth.registro');
     }
-    public function registro(RegistroRequest $request) {
+    public function store(RegistroRequest $request) {
         $usuario = Usuario::create($request->validated());
-        return redirect()->route('login.form')->with('success', 'Account created successfully');
+        return redirect()->route('login')->with('success', 'Account created successfully');
     }
 }

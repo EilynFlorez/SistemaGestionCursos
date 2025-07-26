@@ -22,13 +22,13 @@ class RegistroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_rol' => 'required|in:0,1',
-            'tipo_documento' => 'required|in:CC,TI,RC,CE,NIT,PP,PEP,DIE',
+            'id_rol' => 'required|in:1',
+            'tipo_documento' => 'required|in:CC,TI,CE,PEP,PPT',
             'documento' => 'required|unique:usuarios,documento',
             'nombres' => 'required|string|max:40',
             'papellido' => 'required|string|max:20',
             'sapellido' => 'required|string|max:20',
-            'edad' => 'required|max:3|min:1',
+            'edad' => 'required|integer|between:12,100',
             'genero' => 'required|in:M,F,otro',
             'email' => 'required|unique:usuarios,email',
             'password' => 'required|min:8',

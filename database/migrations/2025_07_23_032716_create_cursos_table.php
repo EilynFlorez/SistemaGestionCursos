@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('cupos_disponibles');
             $table->date('f_inicio');
             $table->date('f_fin');
-            $table->integer('duracion');
             $table->timestamps();
         });
     }

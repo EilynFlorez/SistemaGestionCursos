@@ -9,6 +9,11 @@
     <h2>Administrador</h2>
     <h1>SGC - Sistema de Gestión de Cursos</h1>
     <p>Bienvenid@, {{ Auth::user()->nombres}}</p>
-    <p><a href="/logout">Cerrar sesión</a></p>
+    <ul>
+        <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
+        <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
+    </ul>
+    
+
 </body>
 </html>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     //
-    public function show() {
+    public function index() {
         if(Auth::check()) {
             $usuario = Auth::user();
 

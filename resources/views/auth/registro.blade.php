@@ -64,7 +64,7 @@
 
     </form>
 
-    <p>Si ya tiene una cuenta <a href="{{ route('login.form') }}">Inicie sesión</a></p>
+    <p>Si ya tiene una cuenta <a href="{{ route('login') }}">Inicie sesión</a></p>
 
     @if ($errors->any())
         <div style="color: red;">
