@@ -8,7 +8,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\CursosController;
-
+use App\Http\Controllers\InscripcionController;
 //Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -28,7 +28,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('admin.dashboard');
     //Curso
     Route::get('/admin/cursos', [CursosController::class, 'index'])->name('cursos.index');
-    Route::get('/admin/cursos/{id}', [CursosController::class, 'show'])->name('curso.show');
+    Route::get('/admin/cursos/{id}', [CursosController::class, 'show'])->name('cursoinscripciones.show');
 
     Route::get('/admin/curso/create', [CursosController::class, 'create'])->name('crearcurso.form');
     Route::post('/admin/curso/create', [CursosController::class, 'store'])->name('crearcurso.store');
@@ -42,4 +42,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 //Routes de Estudiante
 Route::middleware(['auth', 'estudiante'])->group(function () {
     Route::get('/estudiante/paginaprincipal', [EstudianteController::class, 'show'])->name('estudiante.paginaprincipal');
+
+    Route::get('/estudiante/cursos', [CursosController::class, 'indexE'])->name('cursosinscripciones.index');
+    Route::get('/estudiante/cursos/{id}', [CursosController::class, 'showE'])->name('curso.showE');
+
+    Route::post('/estudiante/inscripcion', [InscripcionController::class, 'store'])->name('inscripcion.store');
+    Route::get('/estudiente/cursosinscritos', [InscripcionController::class, 'index'])->name('cursosinscritos.index');
 });

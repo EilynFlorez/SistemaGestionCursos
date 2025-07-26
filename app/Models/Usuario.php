@@ -54,8 +54,15 @@ class Usuario extends Authenticatable
         ];
     }
 
-    public function rol()
-    {
+    public function rol() {
         return $this->belongsTo(Rol::class, 'id_rol');
+    }
+
+    public function inscripciones(){
+        return $this->hasMany(Inscripcion::class);
+    }
+
+    public function cursosInscritos(){
+        return $this->belongsToMany(Cursos::class, 'inscripciones', 'estudiante_id', 'curso_id')->withTimestamps()->withPivot('fecha_hora');
     }
 }

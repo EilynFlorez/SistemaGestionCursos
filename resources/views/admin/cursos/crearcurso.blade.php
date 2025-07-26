@@ -26,7 +26,7 @@
         <br>
 
         <label>Fecha de inicio:</label>
-        <input type="date" name="f_inicio" required>
+        <input type="date" name="f_inicio" min="{{ date('Y-m-d') }}" required>
         <br>
 
         <label>Fecha de fin:</label>

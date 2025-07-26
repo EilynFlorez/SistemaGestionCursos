@@ -9,6 +9,8 @@
     <h2>Estudiante</h2>
     <h1>SGC - Sistema de Gestión de Cursos</h1>
     <p>Bienvenid@, {{ Auth::user()->nombres}}</p>
+    <a href="{{ route('cursosinscripciones.index') }}">Cursos</a>
+    <a href="{{ route('cursosinscritos.index') }}">Mis cursos</a>
     <p><a href="/logout">Cerrar sesión</a></p>
 </body>
 </html>

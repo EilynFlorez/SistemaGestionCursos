@@ -9,14 +9,15 @@ use Illuminate\Support\Facades\Storage;
 
 
 class CursosController extends Controller
-{
+{   
+    //Admin
     public function index() {
         $cursos = Cursos::all();
         return view('admin.cursos.index', compact('cursos'));
     }
 
     public function show($id) {
-        $curso = Cursos::find($id);
+        $curso = Cursos::with('estudiantes')->find($id);
         return view('admin.cursos.detallescurso', compact('curso'));
     }
 
@@ -40,7 +41,7 @@ class CursosController extends Controller
 
         $curso->save();
 
-        return redirect()->route('cursos.index')->with('success', 'Curso creado correctamente.');
+        return redirect()->route('cursos.index');
     }
 
     public function edit($curso) {
@@ -80,5 +81,18 @@ class CursosController extends Controller
         $id->delete();
 
         return redirect()->route('cursos.index')->with('success', 'Producto eliminado correctamente.');
+    }
+
+    
+
+    //Estudiante
+    public function indexE() {
+        $cursos = Cursos::all();
+        return view('estudiante.curso.cursosdisponibles', compact('cursos'));
+    }
+
+    public function showE($id) {
+        $curso = Cursos::find($id);
+        return view('estudiante.curso.cursodetalles', compact('curso'));
     }
 }
