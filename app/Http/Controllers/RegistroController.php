@@ -20,6 +20,6 @@ class RegistroController extends Controller
     }
     public function store(RegistroRequest $request) {
         $usuario = Usuario::create($request->validated());
-        return redirect()->route('login')->with('success', 'Account created successfully');
+        return redirect()->route('login');
     }
 }

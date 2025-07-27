@@ -1,4 +1,4 @@
-@extends('layouts.estudiante')
+@extends('layouts.home')
 @section('contenido')
     <div class="titulo-pagina">
         <h1>Cursos disponibles</h1>
@@ -14,7 +14,7 @@
                 <div class="curso-texto">
                     <h2>{{ $curso->nombre }}</h2>
                     <p class="texto-largo">{{ $curso->descripcion }}</p>
-                    <a href="{{ route('curso.showE', $curso->id) }}"><button class="boton-2">Ver más</button></a>
+                    <a href="{{ route('curso.detalles', $curso->id) }}"><button class="boton-2">Ver más</button></a>
                 </div>
                 
             </article>

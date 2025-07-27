@@ -17,7 +17,7 @@
                     </div>
                     <div class="texto-curso">
                         <h1>{{$curso->nombre}}</h1>
-                        <p>{{$curso->descripcion}}</p>
+                        <p class="texto-largo">{{$curso->descripcion}}</p>
                     </div>
                 </div>
                 

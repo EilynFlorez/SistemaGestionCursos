@@ -69,7 +69,7 @@ class CursosController extends Controller
 
         $curso->save();
 
-        return redirect()->route('cursos.index')->with('success', 'Curso editado correctamente.');
+        return redirect()->route('cursos.index');
     }
 
     public function destroy($curso) {
@@ -80,7 +80,7 @@ class CursosController extends Controller
 
         $id->delete();
 
-        return redirect()->route('cursos.index')->with('success', 'Producto eliminado correctamente.');
+        return redirect()->route('cursos.index');
     }
 
     

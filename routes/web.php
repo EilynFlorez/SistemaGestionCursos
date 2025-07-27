@@ -12,6 +12,8 @@ use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\VolverController;
 //Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/curso', [HomeController::class, 'curso'])->name('curso');
+Route::get('/curso/{id}', [HomeController::class, 'cursodetalles'])->name('curso.detalles');
 
 //Registro
 Route::get('/registro', [RegistroController::class, 'create'])->name('registro.form');

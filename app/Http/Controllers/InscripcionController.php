@@ -23,18 +23,13 @@ class InscripcionController extends Controller
 
         $curso = Cursos::find($request->curso_id);
         if ($curso->cupos_disponibles <= 0) {
-            return redirect()->back()->with('error', 'No hay cupos disponibles para este curso.');
+            return redirect()->back();
         }
         $curso->cupos_disponibles -= 1;
         $curso->save();
 
         $usuarioId = Auth::id(); 
 
-        $yaInscrito = Inscripcion::where('estudiante_id', $usuarioId)->where('curso_id', $request->curso_id)->exists();
-
-        if ($yaInscrito) {
-            return redirect()->back()->with('error', 'Ya estás inscrito en este curso.');
-        }
 
         Inscripcion::create([
             'curso_id' => $request->curso_id,
@@ -42,6 +37,6 @@ class InscripcionController extends Controller
             'fecha_hora' => now(),
         ]);
 
-        return redirect()->back()->with('success', '¡Inscripción realizada con éxito!');
+        return redirect()->back();
     }
 }
