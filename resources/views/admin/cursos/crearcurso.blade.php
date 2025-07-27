@@ -1,49 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Curso</title>
-</head>
-<body>
-    <h1>Crear Curso</h1>
-    <form action="{{ route('crearcurso.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf 
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
-        <br>
+@extends('layouts.admin')
+@section('titulo', 'Crear Curso')
 
-        <label>Descripción:</label>
-        <textarea name="descripcion" required></textarea>
-        <br>
+@section('contenido')
+    <div class="cont-for">
+        <form class="formulario" action="{{ route('crearcurso.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf 
+            <div class="campo">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" required>
+            </div>
 
-        <label>Imagen:</label>
-        <input type="file" name="imagen" accept=".jpg,.jpeg,.png" required>
-        <br>
+            <div class="campo">
+                <label>Descripción:</label>
+                <textarea name="descripcion" required></textarea>
+            </div>
+            
+            <div class="campo">
+                <label>Imagen:</label>
+                <input type="file" name="imagen" accept=".jpg,.jpeg,.png" required>
+            </div>
+            
+            <div class="campo">
+                <label>Cupos disponibles:</label>
+                <input type="number" name="cupos_disponibles" required>
+            </div>
+            
+            <div class="campo">
+                <label>Fecha de inicio:</label>
+                <input type="date" name="f_inicio" min="{{ date('Y-m-d') }}" required>
+            </div>
 
-        <label>Cupos disponibles:</label>
-        <input type="number" name="cupos_disponibles" required>
-        <br>
+            <div class="campo">
+                <label>Fecha de finalización:</label>
+                <input type="date" name="f_fin" min="{{ date('Y-m-d') }}" required>
+            </div>
 
-        <label>Fecha de inicio:</label>
-        <input type="date" name="f_inicio" min="{{ date('Y-m-d') }}" required>
-        <br>
-
-        <label>Fecha de fin:</label>
-        <input type="date" name="f_fin" required>
-
-        <input type="submit" value="crear">
-        <br>
-    </form>
-
+            <button type="submit" class="boton">Crear curso</button>
+        </form>
+    </div>
+    
     @if ($errors->any())
-        <div style="color: red;">
-            <ul>
+        <div class="error">
+            <ul class="lista-error">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
     @endif
-</body>
-</html>
+@endsection

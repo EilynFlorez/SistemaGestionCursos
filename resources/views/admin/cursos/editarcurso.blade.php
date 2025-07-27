@@ -1,48 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Curso</title>
-</head>
-<body>
-    <h1>Crear Curso</h1>
-    <form action="{{ route('editarcurso.store', $id->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf 
-        @method('PUT')
-        <label>Nombre:</label>
-        <input type="text" name="nombre" value="{{$id->nombre}}">
-        <br>
+@extends('layouts.admin')
+@section('titulo', 'Editar curso')
 
-        <label>Descripción:</label>
-        <textarea name="descripcion">{{$id->descripcion}}</textarea>
-        <br>
+@section('contenido')
+    <div class="cont-for">
+        <form class="formulario" action="{{ route('editarcurso.store', $id->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf 
+            @method('PUT')
+            <div class="campo">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" value="{{$id->nombre}}">
+            </div>
 
-        @if($id->imagen)
-            <p>Imagen actual:</p>
-            <img src="{{ asset('storage/' . $id->imagen) }}" width="100"><br>
-        @endif
-        <label>Imagen:</label>
-        <input type="file" name="imagen" accept=".jpg,.jpeg,.png">
-        <br>
+            <div class="campo">
+                <label>Descripción:</label>
+                <textarea name="descripcion">{{$id->descripcion}}</textarea>
+            </div>
 
-        <label>Cupos disponibles:</label>
-        <input type="number" name="cupos_disponibles" value="{{$id->cupos_disponibles}}">
-        <br>
+            <div class="campo">
+                @if($id->imagen)
+                    <p>Imagen actual:</p>
+                    <img src="{{ asset('storage/' . $id->imagen) }}" width="150">
+                    <label>Seleccione la nueva imagen:</label>
+                    <input type="file" name="imagen" accept=".jpg,.jpeg,.png">
+                @endif
+            </div>
 
-        <label>Fecha de inicio:</label>
-        <input type="date" name="f_inicio" value="{{$id->f_inicio}}">
-        <br>
+            <div class="campo">
+                <label>Cupos disponibles:</label>
+                <input type="number" name="cupos_disponibles" value="{{$id->cupos_disponibles}}">
+            </div>
 
-        <label>Fecha de fin:</label>
-        <input type="date" name="f_fin" value="{{$id->f_fin}}">
+            <div class="campo">
+                <label>Fecha de inicio:</label>
+                <input type="date" name="f_inicio" min="{{ date('Y-m-d') }}" value="{{$id->f_inicio}}">
+            </div>
 
-        <input type="submit" value="Editar">
-        <br>
-    </form>
+            <div class="campo">
+                <label>Fecha de finalización:</label>
+            <input type="date" name="f_fin" min="{{ date('Y-m-d') }}" value="{{$id->f_fin}}">
+            </div>
+
+            <button type="submit" class="boton">Editar curso</button>
+        </form>
+    </div>
+    
 
     @if ($errors->any())
-        <div style="color: red;">
+        <div style="error">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -50,5 +54,4 @@
             </ul>
         </div>
     @endif
-</body>
-</html>
+@endsection

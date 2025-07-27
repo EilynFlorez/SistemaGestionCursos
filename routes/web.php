@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\InscripcionController;
+use App\Http\Controllers\VolverController;
 //Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
