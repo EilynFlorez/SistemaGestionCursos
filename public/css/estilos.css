@@ -5,6 +5,8 @@
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
 }
+
+
 /*Estilos de interfaz administrador*/
 .body-admin {
     display: flex;
@@ -70,7 +72,7 @@
 .titulo {
     display: flex;
     justify-content: space-between;
-    box-shadow: -5px 2px 15px rgba(0, 151, 178, 0.4); /*desplazamientoX desplazamientoY difuminado extensión color*/
+    box-shadow: 0px 6px 8px -2px rgba(0, 151, 178, 0.4); /*desplazamientoX desplazamientoY difuminado extensión color*/
     width: 100%;
     padding: 26px 30px;
     height: auto;
@@ -141,7 +143,7 @@
         90deg, rgb(43, 156, 175), rgb(3, 124, 146)
     );
     border-radius: 5px;
-    box-shadow: 5px 5px 16px rgba(209, 210, 212, 0.6);
+    box-shadow: 5px 5px 16px rgba(8, 8, 8, 0.2);
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
@@ -229,9 +231,26 @@
 }
 
 .campo input{
+    border-radius: 8px;
     border: 2px solid rgb(0, 151, 178);
     height: 35px;
     width: 100%;
+    color: rgb(5, 72, 84);
+    font-size: 16px;
+}
+
+.campo select {
+    border-radius: 8px;
+    border: 2px solid rgb(0, 151, 178);
+    height: 35px;
+    width: 100%;
+    color: rgb(5, 72, 84);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.campo select option {
+    background-color: rgba(209, 210, 212, 0.6);
     color: rgb(5, 72, 84);
     font-size: 16px;
 }
@@ -280,4 +299,54 @@ tr td {
     text-align: left;
     padding: 12px;
     border-bottom: 1px solid rgba(5, 72, 84, 0.2);
+}
+
+
+/*EStilos login*/
+.cont-boton {
+    padding: 20px;
+    height: 10%;
+    width: 100%;
+}
+
+.contenedor-cont {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.conten-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    background-color: rgba(81, 119, 124, 0.3);
+    width: 40%;
+    gap: 20px;
+    border-radius: 10px;
+}
+.conten-form p {
+    color: rgb(5, 72, 84);
+}
+
+.conten-form a {
+    text-decoration: none;
+    color: rgb(176, 145, 17);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.titulo-form {
+    color: rgb(13, 96, 111);
+    font-size: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 15px;
 }

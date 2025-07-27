@@ -11,27 +11,27 @@
             </div>
 
             <div class="campo">
-                <label>Descripción:</label>
+                <label>Descripción*</label>
                 <textarea name="descripcion" required></textarea>
             </div>
             
             <div class="campo">
-                <label>Imagen:</label>
+                <label>Imagen*</label>
                 <input type="file" name="imagen" accept=".jpg,.jpeg,.png" required>
             </div>
             
             <div class="campo">
-                <label>Cupos disponibles:</label>
+                <label>Cupos disponibles*</label>
                 <input type="number" name="cupos_disponibles" required>
             </div>
             
             <div class="campo">
-                <label>Fecha de inicio:</label>
+                <label>Fecha de inicio*</label>
                 <input type="date" name="f_inicio" min="{{ date('Y-m-d') }}" required>
             </div>
 
             <div class="campo">
-                <label>Fecha de finalización:</label>
+                <label>Fecha de finalización*</label>
                 <input type="date" name="f_fin" min="{{ date('Y-m-d') }}" required>
             </div>
 
